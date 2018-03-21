@@ -3,15 +3,15 @@
 function persistence(num) {
     var nums = num.toString().split("")
     var count = 0
-    while (nums.length>1) {
-      var newNum = 1
-      var i = 0
-      while (i<nums.length) {
-        newNum = newNum * nums[i]
-        i++
-        }
-    count++
-    nums = newNum.toString().split("")
-    }
-    return count
-  }
+      while (nums.length>1) {
+        var newNum = 1
+        var i = 0
+          while (i<nums.length) {
+            newNum = newNum * nums[i]
+            i++
+            }
+        count++
+        nums = newNum.toString().split("")
+      }
+  return count
+}
