@@ -6,11 +6,8 @@
 // "("               =>  false
 // "(())((()())())"  =>  true
 
-<<<<<<< HEAD
-// var parens = ")(())"
-=======
+
 // var parens = ")(()))"
->>>>>>> 48a1dcfe3fefe2890a807024a12706678021c280
 
 function validParentheses(parens){
   if (parens[0] == ")" || parens[parens.length-1] == "(") {
