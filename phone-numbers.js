@@ -3,7 +3,7 @@
 //
 // createPhoneNumber([1, 2, 3, 4, 5, 6, 7, 8, 9, 0]) // => returns "(123) 456-7890"
 
-var numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0]
+// var numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0]
 
 function createPhoneNumber(numbers){
   var phoneNumber = ""
@@ -15,3 +15,13 @@ function createPhoneNumber(numbers){
     phoneNumber = phoneNumber + char + numbers[i]
   } return phoneNumber
 }
+
+// A clever way to solve the same problem.
+// function createPhoneNumber(numbers){
+//   var format = "(xxx) xxx-xxxx";
+//   for(var i = 0; i < numbers.length; i++)
+//   {
+//     format = format.replace('x', numbers[i]);
+//   }
+//   return format;
+// }
