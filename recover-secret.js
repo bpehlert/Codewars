@@ -44,7 +44,6 @@ function recoverSecret(triplets) {
     }
   }
 
-
   console.log(col1);
   return result
 }
