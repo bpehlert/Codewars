@@ -15,8 +15,7 @@ function minValue(values){
   values.forEach(function(n){
     if (result.indexOf(n) < 0) {
       result.push(n);
-    }
-    return result;
+    }return result;
   });
   var str = ""
   result.sort().forEach(function(n){
