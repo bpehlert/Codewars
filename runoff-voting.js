@@ -38,6 +38,13 @@ function runoff(voters){
 
     // Function that receives votes and elimnates votes due to logic
     function clearVote (votes, firstChoice) {
+        // Receives votes as object to count number for each candidate
+
+        // Receives object of firstChoice to count number for each candidate. 
+
+        // Logic to elminate ineligible votes
+
+        // Returns new array of all of the valid votes
 
     }
 
