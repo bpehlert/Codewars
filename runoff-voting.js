@@ -24,34 +24,15 @@ const voters = [
     [ 'e', 'a', 'c', 'b', 'd' ],
     [ 'e', 'd', 'a', 'b', 'c' ],
     [ 'd', 'b', 'a', 'e', 'c' ] 
-]
+];
+
+// Soltion found on CodeWars
 
 function runoff(voters){
-    const candidates = ['a', 'b', 'c', 'd', 'e'];
-    let votes = []
-    voters.forEach(voter => votes.push(...voter));
-
-    console.log(votes);
-    
-    const firstChoice = voters.map(voter => voter[0]);
-    
-
-    // Function that receives votes and elimnates votes due to logic
-    function clearVote (votes, firstChoice) {
-        // Receives votes as object to count number for each candidate
-
-        // Receives object of firstChoice to count number for each candidate. 
-
-        // Logic to elminate ineligible votes
-
-        // Returns new array of all of the valid votes
-
-    }
-
-
-
-
-    
-}
-
-runoff(voters);
+    let poll = {};
+    for (voter of voters) poll[voter[0]] = (poll[voter[0]] || 0)+1;
+    let max = Math.max.apply(this, Object.values(poll));
+    if (max > voters.length/2) return Object.keys(poll).filter(a => poll[a] == max)[0];
+    var min = Math.min.apply(this, Object.values(poll));
+    return runoff(voters.map(a => a.filter(b => poll[b] != min && poll[b]!= undefined)))
+  };
