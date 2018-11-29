@@ -43,3 +43,7 @@ function countSheeps(arrayOfSheep) {
 }
 
 console.log(countSheeps(array1));
+
+// function countSheeps(arrayOfSheeps) {
+//    return arrayOfSheeps.filter(Boolean).length;
+//  }
