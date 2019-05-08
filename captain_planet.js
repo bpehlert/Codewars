@@ -1,3 +1,5 @@
+// Parse data below to return result string.
+
 // ##################################
 // Location: DEU
 // ##################################
@@ -21,9 +23,10 @@
 // ##################################
 
 function parseData() {
-  // Remember, your data is in a global variable dataFile
+  // Separate string by 'Location: ' and create an loopable array.
   const splitArr = dataFile.split("Location: ");
   splitArr.shift();
+  //   Create variables outside of loop scope to hold values for countries with highest amounts
   let obj = {};
   let topACountry = "";
   let aCountries = "";
@@ -31,8 +34,11 @@ function parseData() {
   let nOCountries = "";
   let topCMCountry = "";
   let cMCountries = "";
-  splitArr.map(loc => {
+
+  for (let i = 0; i < splitArr.length; i++) {
+    const loc = splitArr[i];
     const country = loc.substring(0, 3);
+    // Create an object to more easily reference country data
     obj[loc.substring(0, 3)] = {
       ammonia: loc.substring(
         loc.indexOf("Ammonia: ") + "Ammonia: ".length,
@@ -47,41 +53,56 @@ function parseData() {
         loc.indexOf("Carbon Monoxide: ") + "Carbon Monoxide: ".length + 3
       )
     };
-
-    if (!topACountry) {
-      topACountry = country;
-    }
-    if (obj[country].ammonia > obj[topACountry].ammonia) {
+    // AMMONIA - find countries with highest amounts
+    if (!aCountries) {
       aCountries = country;
       topACountry = country;
     }
-    if (obj[country].ammonia === obj[topACountry].ammonia) {
-      aCountries = topACountry + ", " + country;
+    if (obj[country].ammonia > obj[topACountry].ammonia) {
+      topACountry = country;
+      aCountries = country;
     }
+    if (
+      obj[country].ammonia === obj[topACountry].ammonia &&
+      country !== topACountry
+    ) {
+      aCountries += ", " + country;
 
-    if (!topNOCountry) {
-      topNOCountry = country;
+      topACountry = country;
     }
-    if (obj[country].nitrogen > obj[topNOCountry].nitrogen) {
+    // NITROGEN OXIDE - find countries with highest amounts
+    if (!nOCountries) {
       nOCountries = country;
       topNOCountry = country;
     }
-    if (obj[country].nitrogen === obj[topNOCountry].nitrogen) {
-      nOCountries = topNOCountry + ", " + country;
+    if (obj[country].nitrogen > obj[topNOCountry].nitrogen) {
+      topNOCountry = country;
+      nOCountries = country;
     }
-
-    if (!topCMCountry) {
-      topCMCountry = country;
+    if (
+      obj[country].nitrogen === obj[topNOCountry].nitrogen &&
+      country !== topNOCountry
+    ) {
+      nOCountries += ", " + country;
+      topNOCountry = country;
     }
-    if (obj[country].carbon > obj[topCMCountry].carbon) {
+    // CARBON MONOXIDE - find countries with highest amounts
+    if (!cMCountries) {
       cMCountries = country;
       topCMCountry = country;
     }
-    if (obj[country].carbon === obj[topCMCountry].carbon) {
-      cMCountries = topCMCountry + ", " + country;
+    if (obj[country].carbon > obj[topCMCountry].carbon) {
+      topCMCountry = country;
+      cMCountries = country;
     }
-  });
-  console.log(obj);
+    if (
+      obj[country].carbon === obj[topCMCountry].carbon &&
+      country !== topCMCountry
+    ) {
+      cMCountries += ", " + country;
+      topCMCountry = country;
+    }
+  }
   const output =
     "Ammonia levels in " +
     aCountries +
