@@ -26,3 +26,5 @@ const squirrel = (h, H, S) => {
     ((div % 1) * h) / Math.sin(Math.atan(h / S));
   return Math.round(ans * 1e4) / 1e4;
 };
+
+// squirrel=(h,H,S)=>+Math.hypot(H,H*S/h).toFixed(4)
