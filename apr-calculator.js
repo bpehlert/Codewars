@@ -1,3 +1,6 @@
+// http://www.webmasterymadesimple.com/blog/javascript-function-for-calculating-annual-percentage-rate-a.html
+// help from Paul Cormier
+
 const apr = (loanAmount, term, annualRate, costs) => {
   const rate = annualRate / 100 / 12;
   const monthlyPayment = (loanAmount * rate) / (1 - Math.pow(1 + rate, -term));
