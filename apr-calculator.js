@@ -22,8 +22,9 @@ const apr = (loanAmount, term, annualRate, costs) => {
   return testRate.toFixed(3);
 };
 
-const payment = (PR, IN, P) => {
-  const monthlyRate = IN / 100 / 12;
-  const monthly = (PR * monthlyRate) / (1 - Math.pow(1 + monthlyRate, -P));
+const payment = (loanAmount, annualRate, term) => {
+  const monthlyRate = annualRate / 100 / 12;
+  const monthly =
+    (loanAmount * monthlyRate) / (1 - Math.pow(1 + monthlyRate, -term));
   return monthly;
 };
